@@ -18,11 +18,11 @@ $fa-font-path: '/assets/fonts/font-awesome/';
 @media screen and (min-width: 768px) {
   .container {
     max-width: 730px;
+    margin: 5px auto;
   }
 }
 
 // Component styles are injected through gulp
 /* inject:scss */
-@import 'admin/admin.scss';
-@import 'main/main.scss';
+@import 'main/main';
 /* endinject */

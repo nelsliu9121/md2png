@@ -1,0 +1,15 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width')
+    title Convert
+    link(rel="stylesheet", href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/github.min.css")
+    if ENV_DEVELOPMENT
+      script(src='http://localhost:35729/livereload.js')
+  body
+    pre
+      code.md= code
+    script(src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js")
+    script(type="text/javascript").
+      hljs.initHighlightingOnLoad();

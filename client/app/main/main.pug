@@ -1,14 +1,11 @@
-header#banner.hero-unit
-  .container
-    h1 'Allo, 'Allo!
-    p.lead Kick-start your next web app with Angular Fullstack
-    img(src='assets/images/yeoman.png', alt='I\'m Yeoman')
-
-.container
-  .row
-    .col-lg-12
-      h1.page-header Features:
-      ul.nav.nav-tabs.nav-stacked.col-md-4.col-lg-4.col-sm-6(ng-repeat='thing in $ctrl.awesomeThings')
-        li
-          a(href='#', uib-tooltip='{{thing.info}}')
-            | {{thing.name}}
+md-content(layout-padding)
+  form(name="$ctrl.input" ng-submit="$ctrl.submit()")
+    div(layout="row")
+      md-input-container.md-block(flex)
+        label Markdown
+        textarea(ng-model="$ctrl.code" row="8")
+    div(layout="row")
+      div(flex)
+        md-button.md-raised.md-primary(ng-click="$ctrl.submit()") md2png
+  div(layout="row" ng-if="$ctrl.result")
+    img(ng-attr-src="data:image/png;base64,{{$ctrl.result}}")

@@ -1,28 +1,29 @@
 import angular from 'angular';
-import uiRouter from 'angular-ui-router';
+import framework from '../framework';
 import routing from './main.routes';
 
+import {ConvertService} from './Convert.service';
+
 export class MainController {
-
-  awesomeThings = [];
-
-  /*@ngInject*/
-  constructor($http) {
-    this.$http = $http;
+  constructor(Convert) {
+    this.Convert = Convert;
   }
 
-  $onInit() {
-    this.$http.get('/api/things')
-      .then(response => {
-        this.awesomeThings = response.data;
-      });
+  submit() {
+    this.Convert.png(null, {code: this.code}, res => {
+      this.result = res;
+      console.log(res);
+    });
   }
 }
+MainController.$inject = ['Convert'];
 
-export default angular.module('md2pngApp.main', [uiRouter])
+export default angular.module('md2pngApp.main', [framework])
   .config(routing)
   .component('main', {
     template: require('./main.pug'),
-    controller: MainController
+    controller: MainController,
+    controllerAs: '$ctrl'
   })
+  .factory('Convert', ConvertService)
   .name;
